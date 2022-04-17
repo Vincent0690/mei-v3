@@ -1,0 +1,35 @@
+{
+	"INVITE_URL": "https://discord.com/api/oauth2/authorize?client_id=716647677370302465&permissions=448861109569&scope=bot%20applications.commands",
+	"COMMANDS_DIR": "./commands",
+	"EVENTS_DIR": "./events",
+	"TEST_GUILD_ID": "691222873616023573",
+	"ACTIVITY": {
+		"NAME": "Building... 🦔",
+		"TYPE": "WATCHING"
+	},
+	"COLORS": {
+		"blue": "3489EB",
+		"red": "CE0808",
+		"green": "7CE216",
+		"purple": "961D56",
+		"uncommon_bp": "0195EE",
+		"rare_bp": "A856EB",
+		"epic_bp": "E98800"
+	},
+	"EMOTES": {
+		"success": "<:ok:739559462062391374>",
+		"error": "<:error:739559462943195228>",
+		"bp": "<:bp:787052519217299506>",
+		"fuel": "<:fuel:828204477281992746>",
+		"speed": "<:speed:787049195403083836>",
+		"acceleration": "<:accel:787049189682708482>",
+		"handling": "<:hand:787049191771078686>",
+		"nitro": "<:nitro:787049195143823370>",
+		"void": "<:0_:787056212722188420>",
+		"YellowFlame": "<:YellowFlame:764500109362200586>",
+		"PurpleFlame": "<:PurpleFlame:764500109111066624>",
+		"OrangeFlame": "<:OrangeFlame:764500466985861150>",
+		"BlueFlame": "<:BlueFlame:757222895742091374>",
+		"credit": "<:credit:740932705876967450>"
+	}
+}
