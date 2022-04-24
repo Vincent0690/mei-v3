@@ -132,19 +132,19 @@ module.exports = {
 		//------
 
 		let embed = new MessageEmbed()
-			.setColor(color)
-			.setAuthor({
-				name: `${CAR.brand} ${CAR.model}`.toUpperCase(),
-				iconURL: classIcon,
-				url: `https://www.mei-a9.info/cars?car=${CAR.car_id}`
-			})
-			.setImage(CAR.images[0])
-			.setTitle("⭐".repeat(CAR.max_star))
-			.setDescription(`${config.EMOTES.bp} **${Object.values(CAR.blueprints)[0] === "key" ? "🔑/" : ""}${bps.join("/")} || ${Object.values(CAR.blueprints)[0] === "key" ? `🔑 + ${bpsTotal}` : bpsTotal}**
+		.setColor(color)
+		.setAuthor({
+			name: `${CAR.brand} ${CAR.model}`.toUpperCase(),
+			iconURL: classIcon,
+			url: `https://www.mei-a9.info/cars?car=${CAR.car_id}`
+		})
+		.setImage(CAR.images[0])
+		.setTitle("⭐".repeat(CAR.max_star))
+		.setDescription(`${config.EMOTES.bp} **${Object.values(CAR.blueprints)[0] === "key" ? "🔑/" : ""}${bps.join("/")} || ${Object.values(CAR.blueprints)[0] === "key" ? `🔑 + ${bpsTotal}` : bpsTotal}**
 ${config.EMOTES.fuel} **${CAR.fuels} fuels** - **${CAR.refill}**`)
-			.setFooter({
-				text: `ID: ${CAR.car_id} - Saw incorrect data? Tell us with /feedback`
-			})
+		.setFooter({
+			text: `ID: ${CAR.car_id} - Saw incorrect data? Tell us with /feedback`
+		})
 
 		//------
 
@@ -213,6 +213,9 @@ ${config.EMOTES.PurpleFlame} ${CAR.nitro_speeds.shockwave || "?"}km/h`}`);
 					)
 			]
 		}).then(PANEL => {
+			let UPGRADES_DISABLED = false;
+			let COMPARE_DISABLED = false;
+
 			PANEL.awaitMessageComponent({
 				filter: (i => i.customId === "upgrades" && !i.user.bot),
 				time: 300000,
@@ -220,6 +223,8 @@ ${config.EMOTES.PurpleFlame} ${CAR.nitro_speeds.shockwave || "?"}km/h`}`);
 			}).then(i => {
 				i.deferReply().then(() => {
 					require("./cost").execute(i, CAR.car_id);
+
+					UPGRADES_DISABLED = true;
 
 					interaction.editReply({
 						ephemeral: false,
@@ -236,11 +241,12 @@ ${config.EMOTES.PurpleFlame} ${CAR.nitro_speeds.shockwave || "?"}km/h`}`);
 										.setCustomId("upgrades")
 										.setLabel("Upgrades")
 										.setStyle("SUCCESS")
-										.setDisabled(true),
+										.setDisabled(UPGRADES_DISABLED),
 									new MessageButton()
 										.setCustomId("compare")
 										.setLabel("Compare")
-										.setStyle("PRIMARY"),
+										.setStyle("PRIMARY")
+										.setDisabled(COMPARE_DISABLED),
 								)
 						]
 					});
@@ -254,7 +260,36 @@ ${config.EMOTES.PurpleFlame} ${CAR.nitro_speeds.shockwave || "?"}km/h`}`);
 				time: 300000,
 				componentType: "BUTTON"
 			}).then(i => {
-				i.reply("bitch2").catch(() => {});
+				i.deferReply().then(() => {
+					i.editReply("no").catch(() => {});
+
+					COMPARE_DISABLED = true;
+
+					interaction.editReply({
+						ephemeral: false,
+						embeds: [
+							embed
+						],
+						data: {
+							type: 4,
+						},
+						components: [
+							new MessageActionRow()
+								.addComponents(
+									new MessageButton()
+										.setCustomId("upgrades")
+										.setLabel("Upgrades")
+										.setStyle("SUCCESS")
+										.setDisabled(UPGRADES_DISABLED),
+									new MessageButton()
+										.setCustomId("compare")
+										.setLabel("Compare")
+										.setStyle("PRIMARY")
+										.setDisabled(COMPARE_DISABLED),
+								)
+						]
+					});
+				}).catch(() => {});
 			}).catch(() => {});
 		}).catch(() => {});
 	}

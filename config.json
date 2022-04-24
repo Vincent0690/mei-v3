@@ -11,7 +11,9 @@
 		"blue": "3489EB",
 		"red": "CE0808",
 		"green": "7CE216",
-		"purple": "961D56",
+		"weird_red": "961D56",
+		"yellow": "DEEB34",
+		"purple": "BB34B6",
 		"uncommon_bp": "0195EE",
 		"rare_bp": "A856EB",
 		"epic_bp": "E98800"
@@ -30,6 +32,10 @@
 		"PurpleFlame": "<:PurpleFlame:764500109111066624>",
 		"OrangeFlame": "<:OrangeFlame:764500466985861150>",
 		"BlueFlame": "<:BlueFlame:757222895742091374>",
-		"credit": "<:credit:740932705876967450>"
+		"credit": "<:credit:740932705876967450>",
+		"uncommon_part": "<:uncommon_part:743910455172399134>",
+		"rare_part": "<:rare_part:743914175520309279>",
+		"epic_part": "<:epic_part:743913866118955109>",
+		"upgrades": "<:upgrades:743909862760644658>"
 	}
 }

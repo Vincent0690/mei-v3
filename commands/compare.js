@@ -121,7 +121,7 @@ Example: \`${guild.prefix}compare lancer 1*\``));
 			};
 
 			let answer = new Discord.MessageEmbed()
-			.setColor("DEEB34")
+			.setColor(config.COLORS.yellow)
 			.setTitle("Choose the second car to compare with:");
 
 			if(!a_tokenized) {

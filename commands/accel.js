@@ -57,7 +57,7 @@ ${Table.table(data, {
 						text: `All time are done in 60fps, on a flat road, without any user inputs (nitro nor steering) and in a golden acceleration car.
 This feature is outdated`
 						})
-					.setColor(config.COLORS.purple)
+					.setColor(config.COLORS.weird_red)
 				],
 				data: {
 					type: 4,
@@ -129,7 +129,7 @@ This feature is outdated`
 				ephemeral: false,
 				embeds: [
 					new MessageEmbed()
-					.setColor(config.COLORS.purple)
+					.setColor(config.COLORS.weird_red)
 					.setThumbnail(CAR.images[0])
 					.setTitle(`${CAR.brand} ${CAR.model}`.toUpperCase())
 					.setDescription(`This car reach 200km/h in ${accel_text}.
